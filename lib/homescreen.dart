@@ -46,24 +46,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemCount: postList.length,
                         itemBuilder: (context, index) {
                           return Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                            child: Container(
+                              color: Colors.grey,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
 
 
-                                  Text('Title', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-                                  Text('Title\n' + postList[index].title.toString()),
+                                    Text('Title', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                                    Text('Title\n' + postList[index].title.toString()),
 
-                                  SizedBox(height: 5,),
+                                    SizedBox(height: 5,),
 
-                                  Text('Title', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-                                  SizedBox(height: 5,),
+                                    Text('Title', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                                    SizedBox(height: 5,),
 
-                                  Text('Description\n' +postList[index].body.toString()),
-                                ],
+                                    Text('Description\n' +postList[index].body.toString()),
+                                  ],
+                                ),
                               ),
                             ),
                           );
