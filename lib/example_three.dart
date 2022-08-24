@@ -58,6 +58,7 @@ class _ExampleThreeState extends State<ExampleThree> {
                               ReusableRow( title: 'username', value: snapshot.data![index].username.toString(),),
                               ReusableRow( title: 'email', value: snapshot.data![index].email.toString(),),
                               ReusableRow( title: 'Address', value: snapshot.data![index].address!.city.toString(),),
+                              ReusableRow( title: 'Address Geo', value: snapshot.data![index].address!.geo!.lat.toString(),),
                             ],
                           ),
                         ),
