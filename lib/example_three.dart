@@ -39,29 +39,25 @@ class _ExampleThreeState extends State<ExampleThree> {
       ),
       body: Column(
         children: [
-          Expanded(child: FutureBuilder(
+          Expanded(
+              child: FutureBuilder(
             future: getUserApi(),
-            builder: (context, AsyncSnapshot<List<UserModel>> snapshot){
-              if(!snapshot.hasData){
+            builder: (context, AsyncSnapshot<List<UserModel>> snapshot) {
+              if (!snapshot.hasData) {
                 return CircularProgressIndicator();
-
-              } else{
+              } else {
                 return ListView.builder(
-                    itemCount:userList.length,
-                    itemBuilder: (context, index){
+                    itemCount: userList.length,
+                    itemBuilder: (context, index) {
                       return Card(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Name'),
-                                  Text(snapshot.data![index].name.toString()),
-                                ],
-
-                              )
+                              ReusableRow( title: 'Name', value: snapshot.data![index].name.toString(),),
+                              ReusableRow( title: 'username', value: snapshot.data![index].username.toString(),),
+                              ReusableRow( title: 'email', value: snapshot.data![index].email.toString(),),
+                              ReusableRow( title: 'Address', value: snapshot.data![index].address!.city.toString(),),
                             ],
                           ),
                         ),
@@ -70,6 +66,26 @@ class _ExampleThreeState extends State<ExampleThree> {
               }
             },
           ))
+        ],
+      ),
+    );
+  }
+}
+
+class ReusableRow extends StatelessWidget {
+  String title, value;
+  ReusableRow({Key? key, required this.title, required this.value})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title),
+          Text(value),
         ],
       ),
     );
