@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.api_tutorial">
+    
    <application
         android:label="api_tutorial"
         android:name="${applicationName}"
