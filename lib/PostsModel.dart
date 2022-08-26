@@ -1,13 +1,14 @@
 class PostsModel {
   PostsModel({
-      int? userId,
+    int? userId,
     int? id,
-      String? title,
-      String? body,}){
+    String? title,
+    String? body,
+  }) {
     _userId = userId;
     _id = id;
     _title = title;
- _body = body;
+    _body = body;
   }
 
   PostsModel.fromJson(dynamic json) {
@@ -34,5 +35,4 @@ class PostsModel {
     map['body'] = body;
     return map;
   }
-
 }

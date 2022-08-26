@@ -1,8 +1,10 @@
 import 'package:api_tutorial/example_four.dart';
 import 'package:api_tutorial/example_two.dart';
 import 'package:api_tutorial/homescreen.dart';
+import 'package:api_tutorial/sign_up.dart';
 import 'package:flutter/material.dart';
 
+import 'example_five.dart';
 import 'example_three.dart';
 
 void main() {
@@ -17,11 +19,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home:  ExampleFour(),
+      home:  SignUpScreen(),
     );
   }
 }
