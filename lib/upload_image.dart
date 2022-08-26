@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -34,23 +33,25 @@ class _UploadImageState extends State<UploadImage> {
     {
       showSpinner =true;
     });
-    
-    var stream = new http.ByteStream(image!.openRead());
+
+    var stream =  http.ByteStream(image!.openRead());
     stream.cast();
-    
+
     var length = await image!.length();
-    
+
     var uri = Uri.parse('https://fakestoreapi.com/products');
 
-    var request = new http.MultipartRequest('Post', uri);
+    var request =  http.MultipartRequest('Post', uri);
 
     request.fields['title'] = 'Static title';
 
-    var multiport = new http.MultipartFile(
+    var multiport =  http.MultipartFile(
     'image', stream, length);
 
     request.files.add(multiport);
     var response = await request.send();
+
+    print(response.stream.toString());
     if(response.statusCode == 200){
       setState(()
       {
@@ -79,21 +80,26 @@ class _UploadImageState extends State<UploadImage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-                child: image == null
-                    ? Center(
-                        child: Text('Pick Image'),
-                      )
-                    : Container(
-                        child: Center(
-                          child: Image.file(
-                            File(image!.path).absolute,
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.cover,
+            GestureDetector(
+              onTap: (){
+                getImage();
+              },
+              child: Container(
+                  child: image == null
+                      ? Center(
+                          child: Text('Pick Image'),
+                        )
+                      : Container(
+                          child: Center(
+                            child: Image.file(
+                              File(image!.path).absolute,
+                              height: 100,
+                              width: 100,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      )),
+                        )),
+            ),
             SizedBox(
               height: 150,
             ),
@@ -104,8 +110,9 @@ class _UploadImageState extends State<UploadImage> {
               },
               child: Container(
                 height: 50,
+                width: 200,
                 color: Colors.green,
-                child: Text('Upload'),
+                child: Center(child: Text('Upload')),
               ),
             )
 
